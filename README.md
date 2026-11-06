@@ -71,14 +71,19 @@ The exit code is `0` when all checks pass and `1` otherwise.
 3. Run: `dotnet run -- --url "http://localhost:8000/page.html"`
 4. Edit `page.html`, save, and rerun after each change.
 
+### Results
+
+Mutations were applied cumulatively to a local copy of the page, and every run printed `ALL CHECKS PASSED`.
+
 | Mutation | Result |
 |---|---|
 | Baseline (unmodified copy) | PASS |
 | Renamed `id` and `name` of First Name | PASS |
-| Removed `for=` from labels | to run |
-| Reordered fields | to run |
-| Added a Middle Name input | to run |
-| Changed gender markup / values | to run |
+| Renamed `class` (`form-control` to `inp-9`) on First Name and State | PASS |
+| State block moved above First Name | PASS |
+| Removed `for=` from labels and added extra wrapper `div`/`section` elements | PASS |
+| Added a Middle Name look-alike input (`TEST123` landed in First Name, verified visually) | PASS |
+| Gender radios wrapped in `label` tags, values changed to `m`/`f`/`t`, ids removed (Male selects Male, Female selects Female, verified visually) | PASS |
 
 ## Limitations
 
